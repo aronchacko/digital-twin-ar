@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARON.OS - AR Digital Twin</title>
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- MediaPipe Dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/control_utils/control_utils.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/holistic/holistic.js" crossorigin="anonymous"></script>
+
+    <!-- Three.js Import Map -->
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+                "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="ui-layer">
+        <header>
+            <h1><span class="cyan">ARON.OS</span> // DIGITAL TWIN AR</h1>
+            <p>HUMAN POSE ESTIMATION & KINEMATIC MAPPING</p>
+        </header>
+
+        <div class="video-container">
+            <video class="input_video" style="display: none;"></video>
+            <canvas class="output_canvas" width="640" height="480"></canvas>
+        </div>
+        
+        <div class="status-panel">
+            <div class="status-indicator">
+                <div class="pulse-dot"></div>
+                <span id="system-status">INITIALIZING SYSTEMS...</span>
+            </div>
+            <button id="ar-button" class="cyber-button" style="display:none;">ENTER AR MODE</button>
+        </div>
+    </div>
+
+    <!-- WebGL Canvas for Three.js -->
+    <div id="canvas-container"></div>
+
+    <script type="module" src="./app.js"></script>
+</body>
+</html>
