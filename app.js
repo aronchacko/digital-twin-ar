@@ -78,12 +78,20 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.xr.enabled = true;
 container.appendChild(renderer.domElement);
 
+// Hide the default Three.js AR button which forces itself visible asynchronously
+const hiddenDiv = document.createElement('div');
+hiddenDiv.style.display = 'none';
+document.body.appendChild(hiddenDiv);
+
 const arBtn = ARButton.createButton(renderer);
-document.body.appendChild(arBtn);
-arBtn.style.display = "none";
+hiddenDiv.appendChild(arBtn);
+
 const customArBtn = document.getElementById('ar-button');
-customArBtn.style.display = "block";
-customArBtn.addEventListener('click', () => { arBtn.click(); });
+if (customArBtn) {
+    customArBtn.style.display = "block";
+    customArBtn.addEventListener('click', () => { arBtn.click(); });
+}
+
 
 // --- Particle System ---
 const particleCount = 30000; // Reduced from 50k to fix lag and improve framerate
